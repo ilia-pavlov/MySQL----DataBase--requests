@@ -1,17 +1,17 @@
 SELECT 
-	CONCAT(o.address,o.city,o.state ) AS Full_Office_Name,
-  e.job_title,
-  CONCAT(e.first_name, e.last_name) AS Employee_Full_Name,
-  e.salary,
-	m.first_name AS manager
+    CONCAT(o.address,", ",o.city,", " ,o.state ) AS 'Full Office Name',
+    e.job_title,
+    CONCAT(e.first_name," ",e.last_name) AS 'Employee Full Name',
+    e.salary,
+    CONCAT (m.first_name," ",m.last_name) AS Manager
 
 FROM employees e
 JOIN offices o
-	  USING(office_id)
+	USING(office_id)
 LEFT JOIN employees m
-		  ON m.employee_id = e.reports_to  
+	ON m.employee_id = e.reports_to  
 WHERE (o.office_id,e.salary) IN (SELECT office_id, MAX(salary)
-										             FROM employees
+			         FROM employees
                                  GROUP BY office_id)
 ORDER BY salary DESC           
     

@@ -10,8 +10,8 @@ JOIN offices o
 	USING(office_id)
 LEFT JOIN employees m
 	ON m.employee_id = e.reports_to  
-WHERE (o.office_id,e.salary) IN (SELECT office_id, MAX(salary)
-			         FROM employees
-                                 GROUP BY office_id)
+WHERE e.salary IN (SELECT MAX(salary)
+  			  FROM employees
+                          GROUP BY office_id)
 ORDER BY salary DESC           
     

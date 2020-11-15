@@ -5,7 +5,7 @@
 ##### 1.Find Hightes salary in offices 
     make a list of an offices with highest salary 
     for certain trade.Who's this employees 
-    and who's thier manager.
+    and who's thier manager?
 ##### 2.Find all shipped product
     make all dates of shipped products. With consumers name
     and marked as Shipped or processed.

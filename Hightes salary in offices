@@ -1,3 +1,5 @@
+###op salary in office WHERE IN
+
 SELECT 
     CONCAT(o.address,", ",o.city,", " ,o.state ) AS 'Full Office Name',
     e.job_title,

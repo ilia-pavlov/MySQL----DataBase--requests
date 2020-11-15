@@ -1,0 +1,31 @@
+#### Top salary in office by JOIN
+
+
+SELECT 
+    CONCAT(o.address,", ",o.city,", " ,o.state ) AS 'Full Office Name',
+    e.job_title,
+    CONCAT(e.first_name," ",e.last_name) AS 'Employee Full Name',
+    e.salary,
+    CONCAT (m.first_name," ",m.last_name) AS Manager
+
+FROM employees e
+JOIN offices o
+	USING(office_id)
+LEFT JOIN employees m
+ON m.employee_id = e.reports_to 
+
+LEFT JOIN (
+	SELECT MAX(salary) AS max_salary
+    , office_id
+	FROM employees
+	GROUP BY office_id
+) bm ON bm.office_id = e.office_id
+ 
+
+WHERE bm.max_salary = e.salary  
+ORDER BY salary DESC
+
+
+
+
+
